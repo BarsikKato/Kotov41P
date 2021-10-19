@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Kotov_41P_Project
+namespace ProektRes
 {
     /// <summary>
     /// Логика взаимодействия для ChangeUserWindow.xaml

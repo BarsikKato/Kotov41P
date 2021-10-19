@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kotov_41P_Project
+namespace ProektRes
 {
     /// <summary>
     /// Логика взаимодействия для AdminMenu.xaml
@@ -61,6 +61,13 @@ namespace Kotov_41P_Project
             int index = Convert.ToInt32(lb.Uid);
             lb.ItemsSource = BaseConnect.baseModel.users_to_traits.Where(x => x.id_user == index).ToList();
             lb.DisplayMemberPath = "traits.trait";
+        }
+
+        private void createButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateUserWindow cuw = new CreateUserWindow();
+            cuw.ShowDialog();
+            UpdateList();
         }
     }
 }

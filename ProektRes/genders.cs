@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kotov_41P_Project
+namespace ProektRes
 {
     using System;
     using System.Collections.Generic;

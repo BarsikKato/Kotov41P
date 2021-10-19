@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Kotov_41P_Project
+namespace ProektRes
 {
     internal class BaseConnect
     {

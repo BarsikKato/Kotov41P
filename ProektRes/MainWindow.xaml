@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Kotov_41P_Project"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Kotov_41P_Project.MainWindow"
+        xmlns:local="clr-namespace:ProektRes"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ProektRes.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="529.82" Width="638">
     <Grid>

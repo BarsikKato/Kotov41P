@@ -1,0 +1,42 @@
+﻿<Window x:Class="ProektRes.CreateUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProektRes"
+        mc:Ignorable="d"
+        Title="CreateUserWindow" Height="481.829" Width="270.975">
+
+    <Window.Resources>
+        <DataTemplate x:Key="cbCells">
+            <ListBoxItem Content="{Binding trait}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <GroupBox Header="Введите логин">
+                <TextBox x:Name="boxLogin"/>
+            </GroupBox>
+            <GroupBox Header="Введите пароль">
+                <TextBox x:Name="boxPassword"/>
+            </GroupBox>
+            <GroupBox Header="Введите имя">
+                <TextBox x:Name="boxName"/>
+            </GroupBox>
+            <GroupBox Header="Введите дату рождения">
+                <DatePicker x:Name="boxBirthday"/>
+            </GroupBox>
+            <GroupBox Header="Введите пол">
+                <ListBox Name="boxSexes"/>
+            </GroupBox>
+            <GroupBox Header="Введите доп. инфо">
+                <StackPanel>
+                    <ListBox Name="lbTraits" ItemTemplate="{DynamicResource cbCells}" SelectionMode="Multiple"/>
+                </StackPanel>
+            </GroupBox>
+            <Button x:Name="buttonWrite" Content="Создать" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0, 5" Click="buttonWrite_Click"/>
+            <Button x:Name="buttonBack" Content="Назад" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="buttonBack_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

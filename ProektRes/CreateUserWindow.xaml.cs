@@ -10,30 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProektRes
 {
     /// <summary>
-    /// Логика взаимодействия для Register.xaml
+    /// Логика взаимодействия для CreateUserWindow.xaml
     /// </summary>
-    public partial class Register : Page
+    public partial class CreateUserWindow : Window
     {
-        public Register()
+        public CreateUserWindow()
         {
             InitializeComponent();
+            UpdateList();
+        }
+
+        private void UpdateList()
+        {
             boxSexes.ItemsSource = BaseConnect.baseModel.genders.ToList();
             boxSexes.SelectedValuePath = "id";
             boxSexes.DisplayMemberPath = "gender";
 
             lbTraits.ItemsSource = BaseConnect.baseModel.traits.ToList();
             lbTraits.SelectedValuePath = "id";
-        }
-
-        private void buttonBack_Click(object sender, RoutedEventArgs e)
-        {
-            LoadPage.frameLoad.GoBack();
         }
 
         private void buttonWrite_Click(object sender, RoutedEventArgs e)
@@ -56,12 +55,17 @@ namespace ProektRes
                 }
                 BaseConnect.baseModel.SaveChanges();
                 MessageBox.Show("Данные успешно записаны");
-                LoadPage.frameLoad.GoBack();
+                Close();
             }
             catch
             {
                 MessageBox.Show("Не удалось записать данные");
             }
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

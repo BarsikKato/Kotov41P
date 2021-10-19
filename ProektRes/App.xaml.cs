@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Kotov_41P_Project
+namespace ProektRes
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

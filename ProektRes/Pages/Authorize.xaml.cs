@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kotov_41P_Project
+namespace ProektRes
 {
     /// <summary>
     /// Логика взаимодействия для Authorize.xaml
