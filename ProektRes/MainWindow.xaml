@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kotov_41P_Project"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Kotov_41P_Project.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="529.82" Width="638">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="94*"/>
+            <RowDefinition Height="297*"/>
+            <RowDefinition Height="76*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="167*"/>
+            <ColumnDefinition Width="341*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="Images/Logo.png"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="Красивый заголовок" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Gabriola"/>
+        <Image Grid.Row="1" Grid.Column="0" Source="Images/Banner.png"/>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <Frame x:Name="MainFrm" NavigationUIVisibility="Hidden"/>
+        </ScrollViewer>
+        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Еще немного текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize ="48"  FontFamily="Mistral" Background="Gold"/>
+    </Grid>
+</Window>
