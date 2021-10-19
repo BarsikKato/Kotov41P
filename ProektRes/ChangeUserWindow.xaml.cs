@@ -71,7 +71,17 @@ namespace ProektRes
 
                 foreach (users_to_traits t in md)
                 {
-                    BaseConnect.baseModel.users_to_traits.Remove(t);
+                    int i = 0;
+                    foreach (traits it in lbTraits.SelectedItems)
+                    {
+                        if(t.id_trait == it.id)
+                        {
+                            i++;
+                            break;
+                        }
+                    }
+                    if (i == 0)
+                        BaseConnect.baseModel.users_to_traits.Remove(t);
                 }
 
                 foreach (traits t in lbTraits.SelectedItems)
@@ -79,7 +89,8 @@ namespace ProektRes
                     users_to_traits UTT = new users_to_traits();
                     UTT.id_user = id;
                     UTT.id_trait = t.id;
-                    BaseConnect.baseModel.users_to_traits.Add(UTT);
+                    if(BaseConnect.baseModel.users_to_traits.Where(x => x.id_user == UTT.id_user && x.id_trait == UTT.id_trait).ToList().Count == 0)
+                        BaseConnect.baseModel.users_to_traits.Add(UTT);
                 }
                 BaseConnect.baseModel.SaveChanges();
                 MessageBox.Show("Изменения пользователя " + id + " были успешно записаны.");
