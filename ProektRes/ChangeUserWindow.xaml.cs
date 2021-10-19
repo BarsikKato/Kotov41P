@@ -43,14 +43,18 @@ namespace ProektRes
             lbTraits.SelectedValuePath = "id";
 
             List<users_to_traits> LUTT = BaseConnect.baseModel.users_to_traits.Where(x => x.id_user == SelectedUser.id).ToList();
-            int i = 0;
             foreach (users_to_traits ut in LUTT)
             {
-                if (ut.id_trait == i + 1)
+                int i = 0;
+                while (i <= LUTT.Count)
                 {
-                    lbTraits.SelectedItems.Add(lbTraits.Items[i]);
+                    if (ut.id_trait == i + 1)
+                    {
+                        lbTraits.SelectedItems.Add(lbTraits.Items[i]);
+                        break;
+                    }
+                    i++;
                 }
-                i++;
             }
         }
 
