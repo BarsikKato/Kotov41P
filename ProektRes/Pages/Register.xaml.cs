@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProektRes
+namespace Kotov_ProektRes
 {
     /// <summary>
     /// Логика взаимодействия для Register.xaml
