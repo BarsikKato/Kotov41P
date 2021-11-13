@@ -20,11 +20,18 @@ namespace Kotov_ProektRes
     /// </summary>
     public partial class AdminMenu : Page
     {
+        PageChange pc = new PageChange();
         List<users> users;
+        List<users> lu1;
         public AdminMenu()
         {
             InitializeComponent();
             UpdateList();
+            lbGenderFilter.ItemsSource = BaseConnect.baseModel.genders.ToList();
+            lbGenderFilter.SelectedValuePath = "id";
+            lbGenderFilter.DisplayMemberPath = "gender";
+            lu1 = users;
+            DataContext = pc;
         }
 
         private void UpdateList()
@@ -68,6 +75,70 @@ namespace Kotov_ProektRes
             CreateUserWindow cuw = new CreateUserWindow();
             cuw.ShowDialog();
             UpdateList();
+        }
+
+        private void txtPageCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                pc.CountOnPage = Convert.ToInt32(txtPageCount.Text);
+            }
+            catch
+            {
+                pc.CountOnPage = lu1.Count;
+            }
+            pc.Countlist = users.Count;
+            lbUsersList.ItemsSource = lu1.Skip(0).Take(pc.CountOnPage).ToList();
+        }
+
+        private void Filter(object sender, RoutedEventArgs e)
+        {          
+            try
+            {
+                int OT = Convert.ToInt32(txtOT.Text) - 1;
+                int DO = Convert.ToInt32(txtDO.Text);
+                lu1 = users.Skip(OT).Take(DO - OT).ToList();
+            }
+            catch
+            {
+                //Ничего
+            }
+            if (lbGenderFilter.SelectedValue != null)
+                lu1 = lu1.Where(x => x.gender == (int)lbGenderFilter.SelectedValue).ToList();
+            if (txtNameFilter.Text != "")
+                lu1 = lu1.Where(x => x.name.Contains(txtNameFilter.Text)).ToList();
+
+            lbUsersList.ItemsSource = lu1;
+            pc.Countlist = lu1.Count;
+        }
+
+        private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            switch (tb.Uid)
+            {
+                case "prev":
+                    pc.CurrentPage--;
+                    break;
+                case "next":
+                    pc.CurrentPage++;
+                    break;
+                default:
+                    pc.CurrentPage = Convert.ToInt32(tb.Text);
+                    break;
+            }
+            lbUsersList.ItemsSource = lu1.Skip(pc.CurrentPage * pc.CountOnPage - pc.CountOnPage).Take(pc.CountOnPage).ToList();
+            txtCurrentPage.Text = "Текущая страница: " + (pc.CurrentPage).ToString();
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            lbUsersList.ItemsSource = users;
+            lu1 = users;
+            lbGenderFilter.SelectedIndex = -1;
+            txtNameFilter.Text = "";
+            txtOT.Text = "";
+            txtDO.Text = "";
         }
     }
 }
