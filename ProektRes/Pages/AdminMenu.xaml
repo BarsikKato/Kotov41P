@@ -10,36 +10,36 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DT1">
-            <GroupBox  Header="{Binding id}" Width="300">
-                <StackPanel>
-                    <GroupBox Header="Имя пользователя">
-                        <TextBlock Text="{Binding name}"/>
-                    </GroupBox>
-                    <GroupBox Header="Дата рождения">
-                        <TextBlock Text="{Binding dr, StringFormat={}{0:dd.MM.yyyy}}"/>
-                    </GroupBox>
-                    <GroupBox Header="Пол">
-                        <TextBlock Text="{Binding genders.gender}"/>
-                    </GroupBox>
-                    <GroupBox Header="Черты личности">
-                        <ListBox Name="lbTraits" Loaded="lbTraits_Loaded" Uid="{Binding id}"/>
-                    </GroupBox>
-                    <Image x:Name="UserImage" Loaded="UserImage_Loaded" Uid="{Binding id}"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Button x:Name="deleteButton" Content="Удалить" Tag="{Binding id}" Margin ="-10, 0, 10, 0" Width="60" Click="deleteButton_Click"/>
-                        <Button x:Name="changeButton" Content="Изменить" Tag="{Binding id}" Width="60" Click="changeButton_Click"/>
+            <GroupBox Header="{Binding id}" HorizontalAlignment="Center" Width="300">
+                    <StackPanel>
+                        <GroupBox Header="Имя пользователя">
+                            <TextBlock Text="{Binding name}"/>
+                        </GroupBox>
+                        <GroupBox Header="Дата рождения">
+                            <TextBlock Text="{Binding dr, StringFormat={}{0:dd.MM.yyyy}}"/>
+                        </GroupBox>
+                        <GroupBox Header="Пол">
+                            <TextBlock Text="{Binding genders.gender}"/>
+                        </GroupBox>
+                        <GroupBox Header="Черты личности">
+                            <ListBox Name="lbTraits" Loaded="lbTraits_Loaded" Uid="{Binding id}"/>
+                        </GroupBox>
+                        <Image x:Name="UserImage" Loaded="UserImage_Loaded" Uid="{Binding id}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="deleteButton" Content="Удалить" Tag="{Binding id}" Margin ="-10, 0, 10, 0" Width="60" Click="deleteButton_Click"/>
+                            <Button x:Name="changeButton" Content="Изменить" Tag="{Binding id}" Width="60" Click="changeButton_Click"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
         </DataTemplate>
     </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="75*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row ="0" Orientation="Horizontal"  VerticalAlignment="Center">
+        <StackPanel Grid.Row ="0" Orientation="Horizontal" VerticalAlignment="Center">
             <Button x:Name="backButton" Content="Назад" Click="backButton_Click" Width="50" Margin="5"/>
             <Button x:Name="createButton" Content="Создать пользователя" Click="createButton_Click" Width="50" Margin="5"/>
             <GroupBox Header="от">
@@ -70,6 +70,6 @@
             </StackPanel>
             <TextBlock Name="txtCurrentPage"/>
         </StackPanel>
-        <ListBox Name="lbUsersList" Grid.Row="1" HorizontalAlignment="Center" ItemTemplate="{StaticResource DT1}"/>
+        <ListBox Grid.Row="1" Name="lbUsersList" ItemTemplate="{StaticResource DT1}" ScrollViewer.CanContentScroll="False"/>
     </Grid>
 </Page>

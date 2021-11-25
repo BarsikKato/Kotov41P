@@ -185,7 +185,15 @@ namespace Kotov_ProektRes
 
         private void BtnLoadImage_Click(object sender, RoutedEventArgs e)
         {
+            AvatarGallery avG = new AvatarGallery(id);
+            avG.ShowDialog();
 
+            BitmapImage BI = new BitmapImage();
+            usersimage UI = BaseConnect.baseModel.usersimage.FirstOrDefault(x => x.id_user == id && x.avatar == true);
+            BI.BeginInit();
+            BI.StreamSource = new MemoryStream(UI.image);
+            BI.EndInit();
+            userImage.Source = BI;
         }
     }
 }

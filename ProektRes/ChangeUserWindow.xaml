@@ -14,7 +14,8 @@
     </Window.Resources>
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ScrollViewer>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <GroupBox Header="Имя пользователя">
                     <TextBox x:Name="boxName"/>
@@ -31,7 +32,7 @@
                     </StackPanel>
 
                 </GroupBox>
-                <GroupBox Header="Изображение">
+                <GroupBox Header="Изображение" Width="300">
                     <StackPanel>
                         <Image x:Name="userImage" Loaded="UserImage_Loaded"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -44,6 +45,7 @@
                 <Button x:Name="buttonBack" Content="Отмена" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="buttonBack_Click"/>
             </StackPanel>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
 

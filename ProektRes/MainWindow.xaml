@@ -6,23 +6,21 @@
         xmlns:local="clr-namespace:Kotov_ProektRes"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Kotov_ProektRes.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="645" Width="1280">
+        Title="MainWindow" Height="730.274" Width="1295.377">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="94*"/>
-            <RowDefinition Height="297*"/>
-            <RowDefinition Height="76*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="167*"/>
+            <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="167*"/>
             <ColumnDefinition Width="341*"/>
         </Grid.ColumnDefinitions>
         <Image Source="Images/Logo.png"/>
-        <Label Grid.Row="0" Grid.Column="1" Content="Красивый заголовок" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Gabriola"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="Красивый заголовок" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Gabriola" Height="92" Margin="271,17,271,20" Width="322"/>
         <Image Grid.Row="1" Grid.Column="0" Source="Images/Banner.png"/>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <Frame x:Name="MainFrm" NavigationUIVisibility="Hidden"/>
-        </ScrollViewer>
-        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Еще немного текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize ="48"  FontFamily="Mistral" Background="Gold"/>
+        <Frame Grid.Row="1" Grid.Column="1" x:Name="MainFrm" NavigationUIVisibility="Hidden"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Еще немного текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize ="48"  FontFamily="Mistral" Background="Gold" Height="68" Margin="52,2,470,-1" Width="342"/>
     </Grid>
 </Window>

@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AvatarGallery.xaml.cs">
+      <DependentUpon>AvatarGallery.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChangeUserWindow.xaml.cs">
       <DependentUpon>ChangeUserWindow.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
     <Compile Include="users_to_traits.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="AvatarGallery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChangeUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
