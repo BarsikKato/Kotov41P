@@ -24,6 +24,7 @@
                     <GroupBox Header="Черты личности">
                         <ListBox Name="lbTraits" Loaded="lbTraits_Loaded" Uid="{Binding id}"/>
                     </GroupBox>
+                    <Image x:Name="UserImage" Loaded="UserImage_Loaded" Uid="{Binding id}"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                         <Button x:Name="deleteButton" Content="Удалить" Tag="{Binding id}" Margin ="-10, 0, 10, 0" Width="60" Click="deleteButton_Click"/>
                         <Button x:Name="changeButton" Content="Изменить" Tag="{Binding id}" Width="60" Click="changeButton_Click"/>

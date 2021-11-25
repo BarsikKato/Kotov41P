@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kotov_ProektRes"
         mc:Ignorable="d"
-        Title="ChangeUserWindow" Height="376.5" Width="222.5">
+        Title="ChangeUserWindow" Height="752.304" Width="448.043">
 
     <Window.Resources>
         <DataTemplate x:Key="traitsItem">
@@ -28,6 +28,16 @@
                 <GroupBox Header="Доп. инфо">
                     <StackPanel>
                         <ListBox Name="lbTraits" ItemTemplate="{StaticResource traitsItem}" SelectionMode="Multiple"/>
+                    </StackPanel>
+
+                </GroupBox>
+                <GroupBox Header="Изображение">
+                    <StackPanel>
+                        <Image x:Name="userImage" Loaded="UserImage_Loaded"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="BtmAddImage" Content="Загрузить с компьютера" Click="BtmAddImage_Click" Margin="10, 0" Uid="{Binding id}"/>
+                            <Button x:Name="BtnLoadImage" Content="Загрузить из галереи" Click="BtnLoadImage_Click" Uid="{Binding id}"/>
+                        </StackPanel>
                     </StackPanel>
                 </GroupBox>
                 <Button x:Name="buttonWrite" Content="Записать" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0, 5" Click="buttonWrite_Click"/>

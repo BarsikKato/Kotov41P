@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -139,6 +140,43 @@ namespace Kotov_ProektRes
             txtNameFilter.Text = "";
             txtOT.Text = "";
             txtDO.Text = "";
+        }
+        private void UserImage_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Image IMG = sender as System.Windows.Controls.Image;
+            int ind = Convert.ToInt32(IMG.Uid);
+            users U = BaseConnect.baseModel.users.FirstOrDefault(x => x.id == ind);
+            usersimage UI = BaseConnect.baseModel.usersimage.FirstOrDefault(x => x.id_user == ind && x.avatar == true);
+            BitmapImage BI = new BitmapImage();
+            if (UI != null)
+            {
+                if (UI.path != null)
+                {
+                    BI = new BitmapImage(new Uri(UI.path, UriKind.Relative));
+                }
+                else
+                {
+                    BI.BeginInit();
+                    BI.StreamSource = new MemoryStream(UI.image);
+                    BI.EndInit();
+                }
+            }
+            else
+            {
+                switch (U.gender)
+                {
+                    case 1:
+                        BI = new BitmapImage(new Uri(@"/Images/Male.jpg", UriKind.Relative));
+                        break;
+                    case 2:
+                        BI = new BitmapImage(new Uri(@"/Images/Female.jpg", UriKind.Relative));
+                        break;
+                    default:
+                        BI = new BitmapImage(new Uri(@"/Images/Other.jpg", UriKind.Relative));
+                        break;
+                }
+            }
+            IMG.Source = BI;
         }
     }
 }

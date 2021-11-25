@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kotov_ProektRes"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Kotov_ProektRes.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="529.82" Width="638">
+        Title="MainWindow" Height="645" Width="1280">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="94*"/>

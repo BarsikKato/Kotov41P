@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Kotov_ProektRes
@@ -20,6 +24,7 @@ namespace Kotov_ProektRes
     public partial class ChangeUserWindow : Window
     {
         int id;
+
         public ChangeUserWindow(int id)
         {
             InitializeComponent();
@@ -66,6 +71,7 @@ namespace Kotov_ProektRes
                 SelectedUser.users.name = boxName.Text;
                 SelectedUser.users.dr = (DateTime)boxBirthday.SelectedDate;
                 SelectedUser.users.gender = (int)boxSexes.SelectedValue;
+                //SelectedUser.users.
 
                 var md = BaseConnect.baseModel.users_to_traits.Where(x => x.id_user == SelectedUser.id).ToList();
 
@@ -105,6 +111,81 @@ namespace Kotov_ProektRes
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void UserImage_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Image IMG = sender as System.Windows.Controls.Image;
+            users U = BaseConnect.baseModel.users.FirstOrDefault(x => x.id == id);
+            usersimage UI = BaseConnect.baseModel.usersimage.FirstOrDefault(x => x.id_user == id && x.avatar == true);
+            BitmapImage BI = new BitmapImage();
+            if (UI != null)
+            {
+                if (UI.path != null)
+                {
+                    BI = new BitmapImage(new Uri(UI.path, UriKind.Relative));
+                }
+                else
+                {
+                    BI.BeginInit();
+                    BI.StreamSource = new MemoryStream(UI.image);
+                    BI.EndInit();
+                }
+            }
+            else
+            {
+                switch (U.gender)
+                {
+                    case 1:
+                        BI = new BitmapImage(new Uri(@"/Images/Male.jpg", UriKind.Relative));
+                        break;
+                    case 2:
+                        BI = new BitmapImage(new Uri(@"/Images/Female.jpg", UriKind.Relative));
+                        break;
+                    default:
+                        BI = new BitmapImage(new Uri(@"/Images/Other.jpg", UriKind.Relative));
+                        break;
+                }
+            }
+            IMG.Source = BI;
+        }
+
+        private void BtmAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.DefaultExt = ".jpg";
+            openFileDialog.Filter = "Изображения |*.jpg;*.png";
+            var result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                System.Drawing.Image UserImage = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                ImageConverter IC = new ImageConverter();
+                byte[] ByteArr = (byte[])IC.ConvertTo(UserImage, typeof(byte[]));
+                usersimage UI = new usersimage() { id_user = id, image = ByteArr, avatar = true };
+                try 
+                {
+                    BaseConnect.baseModel.usersimage.Add(UI);
+                    foreach (usersimage ui in BaseConnect.baseModel.usersimage.Where(x => x.id_user == id))
+                    {
+                        ui.avatar = false;
+                    }
+                    BaseConnect.baseModel.SaveChanges();
+                    BitmapImage BI = new BitmapImage();
+                    BI.BeginInit();
+                    BI.StreamSource = new MemoryStream(UI.image);
+                    BI.EndInit();
+                    userImage.Source = BI;
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось загрузить картинку в базу.");
+                }
+            }
+        }
+
+        private void BtnLoadImage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
