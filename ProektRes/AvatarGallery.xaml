@@ -31,5 +31,6 @@
             </ListBox.ItemsPanel>
         </ListBox>
         <Button Name="btnBack" Content ="Назад" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0" Height="30" Width="50" Click="btnBack_Click"/>
+        <Button Name="btnReset" Content ="Убрать аватар" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70,9,0,9" Height="30" Width="90" Click="btnReset_Click"/>
     </Grid>
 </Window>

@@ -14,13 +14,13 @@
             <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="167*"/>
-            <ColumnDefinition Width="341*"/>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="88*"/>
         </Grid.ColumnDefinitions>
         <Image Source="Images/Logo.png"/>
-        <Label Grid.Row="0" Grid.Column="1" Content="Красивый заголовок" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Gabriola" Height="92" Margin="271,17,271,20" Width="322"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="Красивый заголовок" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Gabriola" Height="92" Margin="325,17,321,20" Width="322"/>
         <Image Grid.Row="1" Grid.Column="0" Source="Images/Banner.png"/>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="MainFrm" NavigationUIVisibility="Hidden"/>
-        <Label Grid.Row="2" Grid.Column="1" Content="Еще немного текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize ="48"  FontFamily="Mistral" Background="Gold" Height="68" Margin="52,2,470,-1" Width="342"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Еще немного текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize ="48"  FontFamily="Mistral" Background="Gold" Height="68" Margin="107,2,519,-1" Width="342"/>
     </Grid>
 </Window>

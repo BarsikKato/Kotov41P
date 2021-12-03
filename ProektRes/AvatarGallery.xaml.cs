@@ -25,12 +25,15 @@ namespace Kotov_ProektRes
         {
             InitializeComponent();
             this.id = id;
+            Title = "Галерея пользователя: " + BaseConnect.baseModel.users.FirstOrDefault(x => x.id == id).name;
             LoadUserImages();
         }
 
         private void LoadUserImages()
         {
             avatarList.ItemsSource = BaseConnect.baseModel.usersimage.Where(x => x.id_user == id).ToList();
+            if (avatarList.Items.Count == 0)
+                MessageBox.Show("Галерея пустая.");
         }
 
         private void Image_Loaded(object sender, RoutedEventArgs e)

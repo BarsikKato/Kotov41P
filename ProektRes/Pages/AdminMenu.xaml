@@ -25,23 +25,25 @@
                             <ListBox Name="lbTraits" Loaded="lbTraits_Loaded" Uid="{Binding id}"/>
                         </GroupBox>
                         <Image x:Name="UserImage" Loaded="UserImage_Loaded" Uid="{Binding id}"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                            <Button x:Name="deleteButton" Content="Удалить" Tag="{Binding id}" Margin ="-10, 0, 10, 0" Width="60" Click="deleteButton_Click"/>
-                            <Button x:Name="changeButton" Content="Изменить" Tag="{Binding id}" Width="60" Click="changeButton_Click"/>
-                        </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <Button x:Name="deleteButton" Content="Удалить" Tag="{Binding id}" Margin ="-10, 0, 10, 0" Width="60" Click="deleteButton_Click"/>
+                        <Button x:Name="changeButton" Content="Изменить" Tag="{Binding id}" Width="60" Click="changeButton_Click"/>
                     </StackPanel>
+                </StackPanel>
                 </GroupBox>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid>
+    <Grid Margin="0,0,-78,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="75*"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row ="0" Orientation="Horizontal" VerticalAlignment="Center">
-            <Button x:Name="backButton" Content="Назад" Click="backButton_Click" Width="50" Margin="5"/>
-            <Button x:Name="createButton" Content="Создать пользователя" Click="createButton_Click" Width="50" Margin="5"/>
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="backButton" Content="Назад" Click="backButton_Click" Width="50" Margin="5"/>
+                <Button x:Name="createButton" Content="Создать пользователя" Click="createButton_Click" Width="50" Margin="5"/>
+            </StackPanel>
             <GroupBox Header="от">
                 <TextBox Name="txtOT" Width="50"/>
             </GroupBox>
@@ -54,8 +56,22 @@
             <GroupBox Header="часть имени">
                 <TextBox Name="txtNameFilter" TextChanged="Filter"/>
             </GroupBox>
-            <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" Margin="5"/>
-            <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
+            <StackPanel Orientation="Vertical">
+                <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" Margin="5"/>
+                <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
+            </StackPanel>
+            <GroupBox Header="Сортировка">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <RadioButton Content ="по имени" Click="Sort_Click" Uid="name"/>
+                        <RadioButton Content ="по дате рождения" Click="Sort_Click" Uid="DR"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <RadioButton Content ="по возрастанию" Click="Sort_Click"/>
+                        <RadioButton x:Name="RBReverse" Content ="по убыванию" Click="Sort_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
             <GroupBox Header="сколько на странице" VerticalAlignment="Center" >
                 <TextBox Name="txtPageCount" TextChanged="txtPageCount_TextChanged"/>
             </GroupBox>
@@ -70,6 +86,6 @@
             </StackPanel>
             <TextBlock Name="txtCurrentPage"/>
         </StackPanel>
-        <ListBox Grid.Row="1" Name="lbUsersList" ItemTemplate="{StaticResource DT1}" ScrollViewer.CanContentScroll="False"/>
+        <ListBox Grid.Row="1" Name="lbUsersList" HorizontalAlignment="Center" ItemTemplate="{StaticResource DT1}" ScrollViewer.CanContentScroll="False"/>
     </Grid>
 </Page>

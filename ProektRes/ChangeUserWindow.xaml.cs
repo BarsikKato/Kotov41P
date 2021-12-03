@@ -80,7 +80,7 @@ namespace Kotov_ProektRes
                     int i = 0;
                     foreach (traits it in lbTraits.SelectedItems)
                     {
-                        if(t.id_trait == it.id)
+                        if (t.id_trait == it.id)
                         {
                             i++;
                             break;
@@ -95,7 +95,7 @@ namespace Kotov_ProektRes
                     users_to_traits UTT = new users_to_traits();
                     UTT.id_user = id;
                     UTT.id_trait = t.id;
-                    if(BaseConnect.baseModel.users_to_traits.Where(x => x.id_user == UTT.id_user && x.id_trait == UTT.id_trait).ToList().Count == 0)
+                    if (BaseConnect.baseModel.users_to_traits.Where(x => x.id_user == UTT.id_user && x.id_trait == UTT.id_trait).ToList().Count == 0)
                         BaseConnect.baseModel.users_to_traits.Add(UTT);
                 }
                 BaseConnect.baseModel.SaveChanges();
@@ -162,7 +162,7 @@ namespace Kotov_ProektRes
                 ImageConverter IC = new ImageConverter();
                 byte[] ByteArr = (byte[])IC.ConvertTo(UserImage, typeof(byte[]));
                 usersimage UI = new usersimage() { id_user = id, image = ByteArr, avatar = true };
-                try 
+                try
                 {
                     BaseConnect.baseModel.usersimage.Add(UI);
                     foreach (usersimage ui in BaseConnect.baseModel.usersimage.Where(x => x.id_user == id))
@@ -187,13 +187,31 @@ namespace Kotov_ProektRes
         {
             AvatarGallery avG = new AvatarGallery(id);
             avG.ShowDialog();
-
-            BitmapImage BI = new BitmapImage();
+            users U = BaseConnect.baseModel.users.FirstOrDefault(x => x.id == id);
             usersimage UI = BaseConnect.baseModel.usersimage.FirstOrDefault(x => x.id_user == id && x.avatar == true);
-            BI.BeginInit();
-            BI.StreamSource = new MemoryStream(UI.image);
-            BI.EndInit();
-            userImage.Source = BI;
+            BitmapImage BI = new BitmapImage();
+            if (UI != null)
+            {
+                BI.BeginInit();
+                BI.StreamSource = new MemoryStream(UI.image);
+                BI.EndInit();
+                userImage.Source = BI;
+            }
+            else
+            {
+                switch (U.gender)
+                {
+                    case 1:
+                        BI = new BitmapImage(new Uri(@"/Images/Male.jpg", UriKind.Relative));
+                        break;
+                    case 2:
+                        BI = new BitmapImage(new Uri(@"/Images/Female.jpg", UriKind.Relative));
+                        break;
+                    default:
+                        BI = new BitmapImage(new Uri(@"/Images/Other.jpg", UriKind.Relative));
+                        break;
+                }
+            }
         }
     }
 }
