@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kotov_ProektRes", "ProektRes\Kotov_ProektRes.csproj", "{64625C3D-B15F-4FCD-BA0B-936EBDEF93D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media", "..\Media\Media\Media.csproj", "{7A4AE0B6-BA56-43FB-BC5A-0E38F1C6B8FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{64625C3D-B15F-4FCD-BA0B-936EBDEF93D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64625C3D-B15F-4FCD-BA0B-936EBDEF93D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64625C3D-B15F-4FCD-BA0B-936EBDEF93D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A4AE0B6-BA56-43FB-BC5A-0E38F1C6B8FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4AE0B6-BA56-43FB-BC5A-0E38F1C6B8FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4AE0B6-BA56-43FB-BC5A-0E38F1C6B8FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4AE0B6-BA56-43FB-BC5A-0E38F1C6B8FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

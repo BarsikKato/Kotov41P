@@ -209,6 +209,7 @@
     <Resource Include="Images\Female.jpg" />
     <Resource Include="Images\Male.jpg" />
     <Resource Include="Images\Other.jpg" />
+    <Resource Include="Media\f0rdan.gif" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
