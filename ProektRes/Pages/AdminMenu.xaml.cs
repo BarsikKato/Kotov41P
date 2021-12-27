@@ -195,5 +195,10 @@ namespace Kotov_ProektRes
             lbUsersList.ItemsSource = lu1;
             txtPageCount_TextChanged(null, null);
         }
+
+        private void btnStats_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPage.frameLoad.Navigate(new Pages.Diagramm());
+        }
     }
 }

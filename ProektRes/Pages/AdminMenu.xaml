@@ -57,8 +57,9 @@
                 <TextBox Name="txtNameFilter" TextChanged="Filter"/>
             </GroupBox>
             <StackPanel Orientation="Vertical">
-                <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" Margin="5"/>
-                <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
+                <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" />
+                <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50"/>
+                <Button Name="btnStats" Content="Статы" Click="btnStats_Click"  Width="50"/>
             </StackPanel>
             <GroupBox Header="Сортировка">
                 <StackPanel Orientation="Horizontal">
