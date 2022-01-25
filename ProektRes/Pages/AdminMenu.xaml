@@ -9,9 +9,23 @@
       Title="AdminMenu">
 
     <Page.Resources>
+        <Style TargetType="GroupBox" x:Key="SPstyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding isBoy}" Value="True">
+                    <Setter Property="Background" Value="SlateBlue"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding isGirl}" Value="True">
+                    <Setter Property="Background" Value="Crimson"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding isAlien}" Value="True">
+                    <Setter Property="Background" Value="SeaGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
         <DataTemplate x:Key="DT1">
-            <GroupBox Header="{Binding id}" HorizontalAlignment="Center" Width="300">
-                    <StackPanel>
+            <GroupBox Header="{Binding id}" HorizontalAlignment="Center" Width="300" Style="{StaticResource SPstyle}">
+                <StackPanel>
                         <GroupBox Header="Имя пользователя">
                             <TextBlock Text="{Binding name}"/>
                         </GroupBox>
